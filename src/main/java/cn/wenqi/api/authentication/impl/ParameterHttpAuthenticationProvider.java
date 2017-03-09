@@ -32,7 +32,8 @@ public class ParameterHttpAuthenticationProvider extends AbsHttpAuthenticationPr
     private PlatformUserService platformUserService;
 
     @Override
-    protected PlatformUser doAuth(SecurityContext context, HttpServletRequest request) throws UnsupportedEncodingException, AuthenticationException {
+    protected PlatformUser doAuth(SecurityContext context, HttpServletRequest request)
+            throws UnsupportedEncodingException, AuthenticationException {
         String appId = request.getParameter("appid");
         if (appId == null)
             return null;

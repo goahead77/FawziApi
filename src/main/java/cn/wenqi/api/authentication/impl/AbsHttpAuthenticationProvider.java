@@ -35,10 +35,12 @@ public abstract class AbsHttpAuthenticationProvider implements HttpAuthenticatio
      * @throws UnsupportedEncodingException
      * @throws AuthenticationException      认证失败异常
      */
-    protected abstract PlatformUser doAuth(SecurityContext context, HttpServletRequest request) throws UnsupportedEncodingException, AuthenticationException, UsernameNotFoundException;
+    protected abstract PlatformUser doAuth(SecurityContext context, HttpServletRequest request)
+            throws UnsupportedEncodingException, AuthenticationException, UsernameNotFoundException;
 
     @Override
-    public PlatformUser authFromHttpRequest(SecurityContext context, HttpRequestResponseHolder holder) throws UnsupportedEncodingException, AuthenticationException {
+    public PlatformUser authFromHttpRequest(SecurityContext context, HttpRequestResponseHolder holder)
+            throws UnsupportedEncodingException, AuthenticationException {
         try {
             PlatformUser user = doAuth(context, holder.getRequest());
             httpSessionSecurityContextRepository.saveContext(context, holder.getRequest(), holder.getResponse());

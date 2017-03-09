@@ -28,7 +28,8 @@ public class HeaderHttpAuthenticationProvider extends AbsHttpAuthenticationProvi
     @Autowired
     private PlatformUserService platformUserService;
 
-    protected PlatformUser doAuth(SecurityContext context, HttpServletRequest request) throws UnsupportedEncodingException, AuthenticationException {
+    protected PlatformUser doAuth(SecurityContext context, HttpServletRequest request)
+            throws UnsupportedEncodingException, AuthenticationException {
         String userKey = request.getHeader("user-key");
         String userRandom = request.getHeader("user-random");
         String userSecure = request.getHeader("user-secure");
@@ -36,7 +37,6 @@ public class HeaderHttpAuthenticationProvider extends AbsHttpAuthenticationProvi
             log.debug("Header:" + userKey + " " + userRandom + " " + userSecure);
             PlatformUser platformUser = platformUserService.loadUserByUsername(userKey);
             if (platformUser != null) {
-                // authorize it
                 byte[] toSign = (userKey + userRandom).getBytes("UTF-8");
                 byte[] key1 = DigestUtils.md5Digest(toSign);
                 byte[] key2 = platformUser.getAppSecureKey();
@@ -50,16 +50,11 @@ public class HeaderHttpAuthenticationProvider extends AbsHttpAuthenticationProvi
                     if (log.isDebugEnabled())
                         log.debug("User auto login success as " + platformUser.getAppKey());
                     context.setAuthentication(new QuickAuthentication(platformUser));
-//                    httpSessionSecurityContextRepository.saveContext(context, holder.getRequest(), holder.getResponse());
                     return platformUser;
                 } else {
                     throw new AuthenticationException("bad _user_secure");
-//                    ((HttpServletResponse) response).sendError(HttpServletResponse.SC_PAYMENT_REQUIRED, "_user_secure not acceptable.");
-//                    return;
                 }
             } else {
-//                ((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "_user_key invalid.");
-//                return;
                 throw new AuthenticationException("can not find user:" + userKey);
             }
             // 用户提交了登录请求 而登录请求无法完成 用户需要知道
@@ -67,7 +62,6 @@ public class HeaderHttpAuthenticationProvider extends AbsHttpAuthenticationProvi
             log.debug("User has no plan to log in.");
             return null;
         }
-
         return null;
     }
 }

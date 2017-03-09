@@ -45,10 +45,6 @@ public class AuthorizeFilter implements Filter {
         log.debug("AuthorizeFilter Init.");
         servletContext = filterConfig.getServletContext();
     }
-
-//    private final static String FILTER_APPLIED = FilterChainProxy.class.getName().concat(
-//            ".APPLIED");
-
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         if (log.isDebugEnabled()) {

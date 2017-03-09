@@ -22,5 +22,6 @@ public interface HttpAuthenticationProvider {
      * @throws UnsupportedEncodingException
      * @throws AuthenticationException      认证失败
      */
-    PlatformUser authFromHttpRequest(SecurityContext context, HttpRequestResponseHolder holder) throws UnsupportedEncodingException, AuthenticationException;
+    PlatformUser authFromHttpRequest(SecurityContext context, HttpRequestResponseHolder holder)
+            throws UnsupportedEncodingException, AuthenticationException;
 }
