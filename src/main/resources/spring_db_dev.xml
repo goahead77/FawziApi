@@ -28,9 +28,9 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://192.168.0.200:3306/test?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE&amp;autoReconnectForPools=true&amp;serverTimezone=GMT%2B8&amp;zeroDateTimeBehavior=convertToNull"/>
-        <property name="username" value="diyfintech"/>
-        <property name="password" value="163.com"/>
+        <property name="url" value="jdbc:mysql://101.200.63.60:3306/test?useUnicode=true&amp;characterEncoding=UTF8&amp;autoReconnect=true&amp;rewriteBatchedStatements=TRUE&amp;autoReconnectForPools=true&amp;serverTimezone=GMT%2B8&amp;zeroDateTimeBehavior=convertToNull"/>
+        <property name="username" value="develop"/>
+        <property name="password" value="wenqi1009"/>
     </bean>
 
     <!--<aop:aspectj-autoproxy proxy-target-class="true" />-->

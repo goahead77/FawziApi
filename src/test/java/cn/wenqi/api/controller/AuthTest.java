@@ -2,6 +2,8 @@ package cn.wenqi.api.controller;
 
 import cn.wenqi.api.config.TestBase;
 import org.junit.Test;
+import org.springframework.security.authentication.AuthenticationCredentialsNotFoundException;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.util.DigestUtils;
 
@@ -32,6 +34,7 @@ public class AuthTest extends TestBase {
                 .header("user-random", random.toString())
                 .header("user-secure", userSec))
                 .andReturn();
+
         String back = result.getResponse().getContentAsString();
         System.out.println(back);
     }

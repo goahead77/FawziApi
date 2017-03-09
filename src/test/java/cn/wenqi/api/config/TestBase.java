@@ -11,6 +11,8 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.annotation.PostConstruct;
 
+import static org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers.springSecurity;
+
 /**
  * @author wenqi
  */
@@ -25,6 +27,8 @@ public class TestBase {
 
     @PostConstruct
     public void initMockMvc(){
-        mockMvc= MockMvcBuilders.webAppContextSetup(webApplicationContext).build();
+        mockMvc= MockMvcBuilders.webAppContextSetup(webApplicationContext)
+                .apply(springSecurity())
+                .build();
     }
 }
