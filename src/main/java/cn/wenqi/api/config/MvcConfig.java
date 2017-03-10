@@ -1,5 +1,6 @@
 package cn.wenqi.api.config;
 
+import cn.wenqi.api.interceptor.AuthorizeInterceptor;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -34,6 +35,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter implements ApplicationCon
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         super.addInterceptors(registry);
+        registry.addInterceptor(new AuthorizeInterceptor());
     }
 
     @Override

@@ -22,7 +22,7 @@
         <appender-ref ref="stdout"/>
     </root>
     <logger name="cn.wenqi.api">
-        <level value="${log4j.wenqi.api"/>
+        <level value="${log4j.wenqi.api}"/>
     </logger>
     <logger name="org.springframework.security">
         <level value="${log4j.org.springframework.security}"/>
